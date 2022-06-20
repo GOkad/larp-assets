@@ -1,9 +1,3 @@
-#include "Definitions.h"
-#include "UserDevice.cpp"
-
-// Initialize User Device
-UserDevice userDevice = new UserDevice(); 
-
 void setup() {
   // put your setup code here, to run once:
 

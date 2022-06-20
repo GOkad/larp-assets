@@ -1,8 +1,4 @@
-#include "Definitions.h"
-#include "UserDevice.cpp"
-
-// Initialize User Device
-UserDevice userDevice = new UserDevice(); 
+#include <ESP8266WiFi.h>
 
 void setup() {
   // put your setup code here, to run once:
