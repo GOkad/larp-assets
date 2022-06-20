@@ -2,7 +2,7 @@
 #include "UserDevice.cpp"
 
 // Initialize User Device
-UserDevice userDevice = new UserDevice(); 
+UserDevice userDevice = UserDevice(10); 
 
 void setup() {
   // put your setup code here, to run once:

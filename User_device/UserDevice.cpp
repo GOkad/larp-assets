@@ -10,6 +10,7 @@
  */
 
 #include "Arduino.h"
+#include "CommunicationLibrary.cpp"
 
 /**
  * User Device class definition
@@ -17,15 +18,20 @@
  */
 class UserDevice {
   private:
-  
+    int test;
+    CommunicationHandler comm;
 
   public:
-    UserDevice( ) {
+    UserDevice( int test );
+
+    // Methods
+};
+
+UserDevice::UserDevice( int test ) {
+    this->test = test;
+    comm = CommunicationHandler();
     //   this->var = var;
       
       // Pinmode
     //   pinMode(pinLED, OUTPUT);
-    }
-
-    // Methods
-};
+}

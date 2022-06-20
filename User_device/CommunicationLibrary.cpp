@@ -10,11 +10,11 @@
  * 
  */
 
-class Communication {
+class CommunicationHandler {
     private:
 
     public:
-        Communication() {
+        CommunicationHandler() {
 
         }
 };
