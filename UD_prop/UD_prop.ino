@@ -2,7 +2,7 @@
  * @file UD_prop.ino
  * @author George Okadarov
  * @brief [WIP] User device asset
- * @version 1.1.0
+ * @version 1.2.0
  * @date 2022-06-21
  * 
  * @copyright Copyright (c) 2022
@@ -10,9 +10,8 @@
  */
 
 #include "Definitions.h"
-#include<ESP8266WiFi.h>
-#include<espnow.h>
 #include "_communication.h"
+#include "_gui.h"
 
 
 // TODO: Add GUI TFT Screen
@@ -27,11 +26,14 @@ void setup() {
 
   // Setup ESP-NOW
   comm_setup( );
+  gui_setup();
 
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  gui_draw();
 
 }
