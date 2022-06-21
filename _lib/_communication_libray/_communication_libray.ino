@@ -1,8 +1,10 @@
-#include <ESP8266WiFi.h>
+#include "CommunicationHandler.cpp";
+
+CommunicationHandler comm = CommunicationHandler( );
 
 void setup() {
   // put your setup code here, to run once:
-
+  comm.initialize();
 }
 
 void loop() {

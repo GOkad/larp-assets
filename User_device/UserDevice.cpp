@@ -9,8 +9,8 @@
  * 
  */
 
-#include "Arduino.h"
-#include "CommunicationLibrary.cpp"
+// #include "Arduino.h"
+#include "CommunicationHandler.cpp"
 
 /**
  * User Device class definition
@@ -22,14 +22,16 @@ class UserDevice {
     CommunicationHandler comm;
 
   public:
-    UserDevice( int test );
+    UserDevice( );
 
     // Methods
 };
 
-UserDevice::UserDevice( int test ) {
-    this->test = test;
-    comm = CommunicationHandler();
+UserDevice::UserDevice( ) {
+    comm = CommunicationHandler(
+        ESP_NOW_ROLE_COMBO // Device role,
+        ESP_NOW_ROLE_COMBO // Receiver role
+    );
     //   this->var = var;
       
       // Pinmode

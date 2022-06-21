@@ -26,7 +26,7 @@
  *  SSL Support: "All SSL ciphers (most compatible)"
  *  COM Port: Depends *On Your System*
  *********************************************************************************************************************/
- #include<ESP8266WiFi.h>
+#include<ESP8266WiFi.h>
 #include<espnow.h>
 
 #define MY_NAME         "CONTROLLER_NODE"
@@ -62,6 +62,7 @@ void setup() {
   Serial.print("My MAC address is: ");
   Serial.println(WiFi.macAddress());
 
+  
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();        // we do not want to connect to a WiFi network
 
@@ -84,7 +85,11 @@ void loop() {
   packet.sensor2 = 456;
   packet.sensor3 = 3.14;
 
-  esp_now_send(receiverAddress, (uint8_t *) &packet, sizeof(packet));
+  esp_now_send(
+    receiverAddress,
+    (uint8_t *) &packet,
+    sizeof(packet)
+  );
 
   delay(3000);
 }
