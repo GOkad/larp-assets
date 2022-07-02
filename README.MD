@@ -1,5 +1,12 @@
 # L.A.R.P. Assets, programs & schematics
 
+## Install GIT
+>- Download and install [GIT](https://git-scm.com/downloads)
+>- Download and install [GIT Fork](https://git-fork.com/)
+>- Clone the repo
+>- Open `Git fork` and go to `File> Open Repository`
+>- Pull origin and select your branch
+
 ## ESP Developement Setup
 - ### Download and install [Arduino IDE](https://www.arduino.cc/en/software)
 > - `Recomended` download [VS Code](https://code.visualstudio.com/download) for actual developement and use `Arduino IDE` only for verifying and uploading
