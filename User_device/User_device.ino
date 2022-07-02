@@ -1,17 +1,16 @@
-#include<ESP8266WiFi.h>
-#include<espnow.h>
-#include "Definitions.h"
-#include "UserDevice.cpp"
+#include "GUI.h"
 
-// Initialize User Device
-UserDevice userDevice = UserDevice(); 
-  
 void setup() {
-  // put your setup code here, to run once:
-  
+  // Initialize Serial
+  Serial.begin( 9600 );
+
+  // Initialize GUI
+  gui_setup();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Draw GUI
+  gui_draw( );
 
+  delay( 500 );
 }

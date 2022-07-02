@@ -1,5 +1,10 @@
 #include "CommunicationHandler.cpp";
 
+
+void testCallback ( ) {
+  Serial.println("Callback was called");
+}
+
 CommunicationHandler comm = CommunicationHandler( );
 
 void setup() {

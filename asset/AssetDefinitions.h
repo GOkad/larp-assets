@@ -1,3 +1,37 @@
+/**
+ * @file AssetDefinitions.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-06-24
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+/**
+ * @brief ESP 12-F / D1 Mini pinout
+ */
+#define GP_16    16
+#define GP_5     5
+#define GP_4     4
+#define GP_0     0
+#define GP_2     2
+#define GP_14    14
+#define GP_12    12
+#define GP_13    13
+#define GP_15    15
+
+#define D0  16
+#define D1  5
+#define D2  4
+#define D3  0
+#define D4  2
+#define D5  14
+#define D6  12
+#define D7  13
+#define D8  15
+
 #define WIFI_CHANNEL    1
 
 // All Asset types
@@ -44,34 +78,10 @@ enum MESSAGE_RESPONSE {
  * 
  */
 struct __attribute__((packed)) dataPacket {
-    int type;
-    int message_type; 
+    int message_type;
+    long timestamp;
+    String data;
 };
 
 // TODO: Add list of receivers or dynamically change peers 
 // uint8_t receiverAddress[] = {0xBC, 0xDD, 0xC2, 0xBA, 0xFC, 0x76};   // SENSOR MAC
-
-// void transmissionComplete(uint8_t *receiver_mac, uint8_t transmissionStatus);
-// void dataReceived(uint8_t *senderMac, uint8_t *data, uint8_t dataLength);
-
-class PingedAsset {
-    public:
-        // Index in Asset array
-        int id;
-        // Type of Asset [enum TYPES]
-        int type;
-        // Mac address
-        // uint8_t macAddress[];
-        // Last ping
-        unsigned long lsatPing;
-    
-        PingedAsset( int id, int type ) {
-            this->id = id;
-            this->type = type;
-            this->lsatPing = millis( );
-        }
-
-        bool isActive ( ) {
-            return (millis() - this->lsatPing) < 5000;
-        }
-};

@@ -1,0 +1,17 @@
+TFT Screen
+[VCC] GND CS RES A0 SDA SCK LED
+
+ P | 12 | D1 | SCH
+-----------------
+01 | TX | TX | GPS
+03 | RX | RX | GPS
+05 |SCL | D1 | [IO]
+04 |SDA | D2 | [IO]
+00 |FLS | D3 | S-CS
+02 | 02 | D4 | - LED ERROR HANDLER
+ADC| A0 | A0 | + ?  S-DC
+16 |WAKE| D0 | S-RES
+14 |SCLK| D5 | S-SCL
+12 |MISO| D6 | - ?? S-DC
+13 |MOSI| D7 | S-SDA
+15 | CS | D8 | _

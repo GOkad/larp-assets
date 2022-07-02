@@ -12,7 +12,6 @@ void setup() {
     Serial.println("Something went wrong");
   }
 
-  millis();
 }
 
 void loop() {
