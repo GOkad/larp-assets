@@ -1,4 +1,0 @@
-class Communication {
-  public:
-    Communication( );
-};

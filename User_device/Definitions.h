@@ -1,4 +1,19 @@
 /**
+ * @file Definitions.h
+ * @brief Aseet definitions and shared variables
+ * @version 1.0
+ * @date 2022-07-02
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <SPI.h>
+
+/**
  * D1 Mini pinout
  */
 #define GP_16    16

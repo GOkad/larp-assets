@@ -1,6 +1,6 @@
 # L.A.R.P. Assets, programs & schematics
 
-## Project Setup
+## ESP Developement Setup
 - ### Download and install [Arduino IDE](https://www.arduino.cc/en/software)
 > - `Recomended` download [VS Code](https://code.visualstudio.com/download) for actual developement and use `Arduino IDE` only for verifying and uploading
 > - `TODO:` Check `Platform IO` as an alternative
@@ -23,3 +23,10 @@ https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com
 
 - ### Install the `COM` Port driver
 >- Go to `_lig/drivers` and install `CH34x_Install_Windows_v3_4.zip`
+
+
+## JAVA Developement Setup
+- ### `TODO:`Add steps and init project
+
+## Android Developement Setup
+- ### `TODO:`Add steps and init project
