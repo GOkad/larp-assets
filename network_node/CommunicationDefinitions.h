@@ -47,9 +47,9 @@ struct __attribute__((packed)) dataPacket {
  *  - EMPTY REQUEST -
  *
  * [RESP] AUTH - Return information about device 
- *  int deviceType - Type of the device <Definitions.h> [Device Types]
- *  [TYPE] lon - Device Longitude
- *  [TYPE] lat - Device latitute
+ *  - int deviceType - Type of the device <Definitions.h> [Device Types]
+ *  - [TYPE] lon - Device Longitude
+ *  - [TYPE] lat - Device latitute
  * 
  */
 #define PING 0
