@@ -22,6 +22,24 @@
 uint8_t receiverAddress[] = {0xBC, 0xDD, 0xC2, 0xBA, 0xFC, 0x76};
 
 /**
+ * @brief Send data via ESP NOW
+ *
+ * @param uint8_t receiverAddress[] - Mac address of the receiver device 
+ * @param int request - Is this a request or response <CommunicationDefinitions.h>
+ * @param int type - Request/Response type <CommunicationDefinitions.h> 
+ * @param data - Stringified data from device <CommunicationDefinitions.h>
+ */
+void sendData ( uint8_t receiverAddress[], int request, int type, String data ) {
+  dataPacket packet;
+  packet.request = request;
+  packet.type = type;
+  packet.data = data;
+
+  esp_now_send( receiverAddress, (uint8_t *) &packet, sizeof(packet) );
+
+}
+
+/**
  * @brief Callback for when the transmition was completed
  * 
  * @param receiverMac - Mac address of the receiver
@@ -31,6 +49,7 @@ void onTransmissionCompleted(uint8_t *receiverMac, uint8_t transmissionStatus) {
   if(transmissionStatus == 0) {
     Serial.println("Data sent successfully");
   } else {
+    // TODO: Add error handling
     Serial.print("Error code: ");
     Serial.println(transmissionStatus);
   }
@@ -56,23 +75,16 @@ void onDataReceived(uint8_t *senderMac, uint8_t *data, uint8_t dataLength) {
   dataPacket packet;
   memcpy(&packet, data, sizeof(packet));
   
+  Serial.print("Request or Response: ");
+  Serial.println(packet.request == REQUEST ? "Request" : "Response");
   Serial.print("Response/Request type: ");
   Serial.println(packet.type);
   Serial.print("timestamp: ");
   Serial.println(packet.timestamp);
   Serial.print("Data as string: ");
-  Serial.println(packet.stringData);
-}
+  Serial.println(packet.data);
 
-/**
- * @brief Send data via ESP NOW
- * 
- * @param bool request - Is this a request[true] or response[false] 
- * @param int type - Request/Response type <CommunicationDefinitions.h> 
- * @param data - Stringified data from device <CommunicationDefinitions.h>
- */
-void sendData ( bool request, int type, String data ) {
-  // TODO: Send data
+  // TODO: Parse string data
 }
 
 /**

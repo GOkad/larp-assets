@@ -25,25 +25,31 @@
  * bool request - Is this a request[true] or response[false]
  * int type - type selected from REQUEST/RESPONSE definitions
  * unsigned long timestamp - timestamp in ms [millis]
- * String stringData - Data sent from the asset as a String
+ * String data - Data sent from the asset as a String
  */
 struct __attribute__((packed)) dataPacket {
-    bool request;
+    int request;
     int type;
     unsigned long timestamp;
-    String stringData;
+    String data;
 };
+
+/**
+ * Request and Response definitions
+ */
+#define REQUEST     0
+#define RESPONSE    1
 
 /**
  * PING - AUTH [G]
  * 
  * [REQ] PING - Ping device for information
- * - EMPTY REQUEST -
+ *  - EMPTY REQUEST -
  *
  * [RESP] AUTH - Return information about device 
- * int deviceType - Type of the device <Definitions.h> [Device Types]
- * [TYPE] lon - Device Longitude
- * [TYPE] lat - Device latitute
+ *  int deviceType - Type of the device <Definitions.h> [Device Types]
+ *  [TYPE] lon - Device Longitude
+ *  [TYPE] lat - Device latitute
  * 
  */
 #define PING 0
