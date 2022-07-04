@@ -28,29 +28,31 @@
  * String data - Data sent from the asset as a String
  */
 struct __attribute__((packed)) dataPacket {
-    int request;
     int type;
     unsigned long timestamp;
     String data;
 };
 
 /**
- * Request and Response definitions
+ * PING - AUTH [G]
  */
-#define REQUEST     0
-#define RESPONSE    1
+    /**
+     * [REQ] PING - Ping device for information
+     *  - EMPTY REQUEST -
+     */
+    #define PING 0
+    /**
+     * [RESP] AUTH - Return information about device 
+     *  - int deviceType - Type of the device <Definitions.h> [Device Types]
+     *  - [TYPE] lon - Device Longitude
+     *  - [TYPE] lat - Device latitute
+     * 
+     */
+    #define AUTH 1
+
+
 
 /**
- * PING - AUTH [G]
- * 
- * [REQ] PING - Ping device for information
- *  - EMPTY REQUEST -
- *
- * [RESP] AUTH - Return information about device 
- *  - int deviceType - Type of the device <Definitions.h> [Device Types]
- *  - [TYPE] lon - Device Longitude
- *  - [TYPE] lat - Device latitute
- * 
+ * @brief String data separator
  */
-#define PING 0
-#define AUTH 0
+#define SEPARATOR   "|"

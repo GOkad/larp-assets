@@ -8,8 +8,13 @@
  */
 
 #include "Definitions.h"
+
+#define DEVICE_TYPE   NETWORK_NODE
+
 #include "Communication.h"
 #include "WiFiConnection.h"
+
+bool sender = true;
 
 void setup() {
   // put your setup code here, to run once:
@@ -26,5 +31,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  if ( sender ) {
+    // TODO: Test sender - receiver [PING - AUTH]
+    // TODO: Check how to broadcast without a specific mac address
+    // sendData(  )
+  }
 }
