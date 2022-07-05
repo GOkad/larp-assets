@@ -14,8 +14,6 @@
 #include "Communication.h"
 #include "WiFiConnection.h"
 
-bool sender = true;
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
@@ -30,10 +28,14 @@ void setup() {
 }
 
 void loop() {
+  
+  bool sender = false;
   // put your main code here, to run repeatedly:
   if ( sender ) {
     // TODO: Test sender - receiver [PING - AUTH]
     // TODO: Check how to broadcast without a specific mac address
-    // sendData(  )
+    sendData( noPinsMini, PING, "" );
   }
+
+  delay(5000);  
 }

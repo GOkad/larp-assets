@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Version 1.2.0 [2022-07-XX]
 ### Added
 - `Asset` class
-- `PING - AUTH` ?handeling?
+- `[REQ] PING - [RESP] AUTH` Handlers
 ### Removed
 - `bool request` parameter from data packet
 

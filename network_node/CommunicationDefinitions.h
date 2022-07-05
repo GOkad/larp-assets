@@ -15,6 +15,7 @@
  * 
  * [RESP] int RESPONSE_NAME - description
  * - Data sent as string -
+ * [type] handle<RESPONSE_NAME>()
  * 
  * TODO: Check for struct -> String | String -> struct conversion
  */
@@ -50,6 +51,19 @@ struct __attribute__((packed)) dataPacket {
      */
     #define AUTH 1
 
+    /**
+     * @brief Authuentication handler
+     * Called when a device send authentication data
+     * 
+     * @param String data - Data sent from device
+     */
+    void handleAuthentication( String data ) {
+        // TODO: Parse string data
+        // TODO: Handle Authentication based on Device sender type and this Device type
+        if ( DEVICE_TYPE == NETWORK_NODE  ) {
+            // TODO: Create a new Asset()
+        }
+    }    
 
 
 /**
