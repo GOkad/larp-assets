@@ -26,6 +26,7 @@ uint8_t noPinsMini[] = {0x40, 0x91, 0x51, 0x44, 0xD9, 0x65};
 // Pins D1 mini
 uint8_t pinsMini[] = {0x40, 0x91, 0x51, 0x46, 0x27, 0x56};
 
+
 /**
  * @brief Send data via ESP NOW
  *
@@ -135,6 +136,7 @@ bool initializeESPNOW (  ) {
     // Add ESP NOW peers
     // esp_now_add_peer(noPinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
     esp_now_add_peer(pinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
+    // esp_now_add_peer(receiverAddress, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
 
     return true;
 }
