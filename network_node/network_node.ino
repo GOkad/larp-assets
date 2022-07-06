@@ -14,6 +14,15 @@
 #include "Communication.h"
 #include "WiFiConnection.h"
 
+
+void handleAuthentication ( String data ) {
+    // TODO: Parse string data
+    // TODO: Handle Authentication based on Device sender type and this Device type
+    if ( DEVICE_TYPE == NETWORK_NODE  ) {
+        // TODO: Create a new Asset()
+    }
+}
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
