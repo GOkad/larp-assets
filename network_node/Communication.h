@@ -1,7 +1,7 @@
 /**
  * @file Communication.h
  * @brief Main Communication Handler
- * @version 1.1.0
+ * @version 1.2.0
  * @date 2022-07-02
  * 
  * @copyright Copyright (c) 2022
@@ -19,20 +19,25 @@
 
 // TODO: See how this can be a list of MAC addresses
 // and also switch it to #define if possible [pointers?]
+
+// No pin D1 mini
 uint8_t receiverAddress[] = {0xBC, 0xDD, 0xC2, 0xBA, 0xFC, 0x76};
+uint8_t noPinsMini[] = {0x40, 0x91, 0x51, 0x44, 0xD9, 0x65};
+// Pins D1 mini
+uint8_t pinsMini[] = {0x40, 0x91, 0x51, 0x46, 0x27, 0x56};
+
 
 /**
  * @brief Send data via ESP NOW
  *
  * @param uint8_t receiverAddress[] - Mac address of the receiver device 
- * @param int request - Is this a request or response <CommunicationDefinitions.h>
  * @param int type - Request/Response type <CommunicationDefinitions.h> 
  * @param data - Stringified data from device <CommunicationDefinitions.h>
  */
-void sendData ( uint8_t receiverAddress[], int request, int type, String data ) {
+void sendData ( uint8_t receiverAddress[], int type, String data ) {
   dataPacket packet;
-  packet.request = request;
   packet.type = type;
+  packet.timestamp = millis();
   packet.data = data;
 
   esp_now_send( receiverAddress, (uint8_t *) &packet, sizeof(packet) );
@@ -75,8 +80,6 @@ void onDataReceived(uint8_t *senderMac, uint8_t *data, uint8_t dataLength) {
   dataPacket packet;
   memcpy(&packet, data, sizeof(packet));
   
-  Serial.print("Request or Response: ");
-  Serial.println(packet.request == REQUEST ? "Request" : "Response");
   Serial.print("Response/Request type: ");
   Serial.println(packet.type);
   Serial.print("timestamp: ");
@@ -85,6 +88,28 @@ void onDataReceived(uint8_t *senderMac, uint8_t *data, uint8_t dataLength) {
   Serial.println(packet.data);
 
   // TODO: Parse string data
+
+  // Data to be sent
+  String stringData = "";
+  // Handle Responses
+  switch ( packet.type ) {
+    // Respond to Device being pinged
+    case PING:
+      // Return info about this device to sender
+      stringData += DEVICE_TYPE;
+      stringData += SEPARATOR;
+      sendData( senderMac, AUTH, stringData );
+      break;
+    // Handle AUTH response
+    case AUTH:
+      handleAuthentication( packet.data );
+      break;
+
+    default:
+      Serial.print("UNDEFINED REQUEST/RESPONSE TYPE: ");
+      Serial.println(packet.type);
+      break;
+  }
 }
 
 /**
@@ -109,6 +134,8 @@ bool initializeESPNOW (  ) {
     esp_now_register_recv_cb(onDataReceived);
     
     // Add ESP NOW peers
+    // esp_now_add_peer(noPinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
+    esp_now_add_peer(pinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
     // esp_now_add_peer(receiverAddress, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
 
     return true;

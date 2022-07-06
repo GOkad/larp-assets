@@ -8,8 +8,20 @@
  */
 
 #include "Definitions.h"
+
+#define DEVICE_TYPE   NETWORK_NODE
+
 #include "Communication.h"
 #include "WiFiConnection.h"
+
+
+void handleAuthentication ( String data ) {
+    // TODO: Parse string data
+    // TODO: Handle Authentication based on Device sender type and this Device type
+    if ( DEVICE_TYPE == NETWORK_NODE  ) {
+        // TODO: Create a new Asset()
+    }
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -25,6 +37,15 @@ void setup() {
 }
 
 void loop() {
+  
+  bool sender = false;
   // put your main code here, to run repeatedly:
+  if ( sender ) {
+    // TODO: Test sender - receiver [PING - AUTH]
+    // TODO: Check how to broadcast without a specific mac address
+    sendData( noPinsMini, PING, "" );
+  }
 
+  delay(5000);  
+  // put your main code here, to run repeatedly:
 }
