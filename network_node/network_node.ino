@@ -9,18 +9,20 @@
 
 #include "Definitions.h"
 
+// Define the type of this device
 #define DEVICE_TYPE   NETWORK_NODE
 
 #include "Communication.h"
 #include "WiFiConnection.h"
 
-
+/**
+ * @brief Handle Authentication Response
+ * 
+ * @param int senderDeviceType - Type of the sender device
+ * @param String data - Data sent from device
+ */
 void handleAuthentication ( String data ) {
-    // TODO: Parse string data
-    // TODO: Handle Authentication based on Device sender type and this Device type
-    if ( DEVICE_TYPE == NETWORK_NODE  ) {
-        // TODO: Create a new Asset()
-    }
+  
 }
 
 void setup() {
