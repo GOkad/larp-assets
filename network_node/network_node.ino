@@ -13,17 +13,8 @@
 #define DEVICE_TYPE   NETWORK_NODE
 
 #include "Communication.h"
+#include "RequestResponseHandlers.h"
 #include "WiFiConnection.h"
-
-/**
- * @brief Handle Authentication Response
- * 
- * @param int senderDeviceType - Type of the sender device
- * @param String data - Data sent from device
- */
-void handleAuthentication ( String data ) {
-  
-}
 
 void setup() {
   // put your setup code here, to run once:
