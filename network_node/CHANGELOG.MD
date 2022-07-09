@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version 1.3.0 [2022-07-xx]
 ### Added
+- Web server base functionality
 - `RequestResponseHandler.h` file for all Request/Response handlers
 ### Fixed
 - Typos and errors from PR

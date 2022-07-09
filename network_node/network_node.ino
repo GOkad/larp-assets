@@ -12,9 +12,15 @@
 // Define the type of this device
 #define DEVICE_TYPE   NETWORK_NODE
 
+// TODO: Add SSID Definition based on device/MAC
+#define SSID          "NetNode_1"
+#define PASSWORD      ""
+
 #include "Communication.h"
 #include "RequestResponseHandlers.h"
 #include "WiFiConnection.h"
+
+unsigned long lastSend = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -27,18 +33,31 @@ void setup() {
     getMacAddress( );
   }
 
+  if ( !initializeWiFi(SSID, PASSWORD) ) {
+    Serial.println("WiFi server failed to initialize");
+  } else {
+    Serial.print("AP IP address: ");
+    Serial.println(WiFi.softAPIP());
+  }
+
 }
 
 void loop() {
-  
-  bool sender = false;
   // put your main code here, to run repeatedly:
-  if ( sender ) {
+
+  bool sender = false;
+  
+  if (
+    sender &&
+    ( (millis() - lastSend) >= 5000 )
+  ) {
     // TODO: Test sender - receiver [PING - AUTH]
     // TODO: Check how to broadcast without a specific mac address
     sendData( noPinsMini, PING, "" );
+    lastSend = millis( );
   }
 
-  delay(5000);  
-  // put your main code here, to run repeatedly:
+  // Listen for HTTP requests from clients
+  server.handleClient();
+
 }
