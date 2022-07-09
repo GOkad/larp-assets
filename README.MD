@@ -22,7 +22,7 @@ https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com
 >- `?ESP?`
 
 - ### Install the `COM` Port driver
->- Go to `_lig/drivers` and install `CH34x_Install_Windows_v3_4.zip`
+>- Go to `_lib/drivers` and install `CH34x_Install_Windows_v3_4.zip`
 
 
 ## JAVA Developement Setup
