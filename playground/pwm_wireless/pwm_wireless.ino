@@ -43,7 +43,8 @@ void setup(void){
 }
 
 void loop(void){
-  server.handleClient();                    // Listen for HTTP requests from clients
+  // Listen for HTTP requests from clients
+  server.handleClient();
 }
 
 void handleRoot() {                         // When URI / is requested, send a web page with a button to toggle the LED

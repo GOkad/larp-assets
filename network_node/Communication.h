@@ -20,12 +20,8 @@
 // TODO: See how this can be a list of MAC addresses
 // and also switch it to #define if possible [pointers?]
 
-// No pin D1 mini
-uint8_t receiverAddress[] = {0xBC, 0xDD, 0xC2, 0xBA, 0xFC, 0x76};
-uint8_t noPinsMini[] = {0x40, 0x91, 0x51, 0x44, 0xD9, 0x65};
-// Pins D1 mini
-uint8_t pinsMini[] = {0x40, 0x91, 0x51, 0x46, 0x27, 0x56};
-
+// ESP 32 Dev KIT v1
+uint8_t esp32dev[] = { 0x84, 0xCC, 0xA8, 0x69, 0xF6, 0xB0};
 
 /**
  * @brief Send data via ESP NOW
@@ -135,8 +131,7 @@ bool initializeESPNOW (  ) {
     
     // Add ESP NOW peers
     // esp_now_add_peer(noPinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
-    esp_now_add_peer(pinsMini, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
-    // esp_now_add_peer(receiverAddress, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
+    esp_now_add_peer(esp32dev, RECEIVER_ROLE, WIFI_CHANNEL, NULL, 0);
 
     return true;
 }
