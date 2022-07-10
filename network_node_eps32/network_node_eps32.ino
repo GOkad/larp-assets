@@ -9,6 +9,9 @@
 #include "WiFi.h"
 #include <esp_now.h>
 #include <WiFi.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+
 
 // Variables for test data
 int int_value;
@@ -79,6 +82,22 @@ void OnDataRecv(const uint8_t * senderMac, const uint8_t *incomingData, int len)
   // esp_now_send(broadcastAddress, (uint8_t *) &newPacket, sizeof(newPacket));
 }
 
+const char index_html[] PROGMEM = R"rawliteral(ESP 32 status = OK)rawliteral";
+
+String processor(const String& var){
+  //Serial.println(var);
+  
+  return String();
+}
+
+
+// Replace with your network credentials
+const char* ssid = "esp32";
+const char* password = "";
+
+// Create AsyncWebServer object on port 80
+WiFiServer server(80);
+
 void setup() {
 
   // Setup Serial Monitor
@@ -112,6 +131,19 @@ void setup() {
   // Print MAC Address to Serial monitor
   Serial.print("MAC Address: ");
   Serial.println(WiFi.macAddress());
+
+  // Init wifi
+  WiFi.softAP(ssid, password);
+  // Start the mDNS responder for esp8266.local
+  IPAddress IP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(IP);
+
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", index_html, processor);
+  });
+  // Start server
+  server.begin();
 }
 
 void loop() {
