@@ -29,7 +29,6 @@
  * String data - Data sent from the asset as a String
  */
 struct __attribute__((packed)) dataPacket {
-    int request;
     int type;
     unsigned long timestamp;
     String data;

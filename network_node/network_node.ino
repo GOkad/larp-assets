@@ -24,7 +24,8 @@ unsigned long lastSend = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);
+  // Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("Communication Node v.1.0");
 
   if ( !initializeESPNOW( ) ) {
@@ -45,7 +46,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  bool sender = false;
+  bool sender = true;
   
   if (
     sender &&
@@ -53,7 +54,7 @@ void loop() {
   ) {
     // TODO: Test sender - receiver [PING - AUTH]
     // TODO: Check how to broadcast without a specific mac address
-    sendData( noPinsMini, PING, "" );
+    sendData( esp32dev, PING, "esp 8266" );
     lastSend = millis( );
   }
 
