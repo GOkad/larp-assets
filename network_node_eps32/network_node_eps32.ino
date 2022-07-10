@@ -1,7 +1,7 @@
 /**
  * ESP 32 DEV Board testing
  * ESP - NOW
- * TODO: WiFi Server
+ * WiFi Server
  * TODO: GPS Module
  */
 
@@ -96,7 +96,7 @@ const char* ssid = "esp32";
 const char* password = "";
 
 // Create AsyncWebServer object on port 80
-WiFiServer server(80);
+AsyncWebServer server(80);
 
 void setup() {
 
@@ -140,7 +140,7 @@ void setup() {
   Serial.println(IP);
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/html", index_html, processor);
+      request->send(200, "text/plain", "ESP 32 STATUS: OK");
   });
   // Start server
   server.begin();
