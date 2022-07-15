@@ -1,0 +1,22 @@
+{
+  "name":"ESPNOWCommunication",
+  "description":"ESP-NOW Communication library for ESP8266 and ESP32",
+  "keywords":"esp-now",
+  "authors":
+  {
+    "name": "George Okadarov",
+    "maintainer": true
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": ""
+  },
+  "version": "1.0.0",
+  "license": "LGPL-3.0",
+  "frameworks": "arduino",
+  "platforms": "",
+  "build": {
+    "libCompatMode": 2
+  }  
+}
