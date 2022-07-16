@@ -242,6 +242,11 @@ void mediabuttons() {
   screen.fillTriangle(42, 20, 42, 60, 90, 40, GREEN);
 }
 
+void rerenderScreenFunction()
+{
+  // Your code here
+}
+
 /**
  * @brief Main draw gui function
  * 
@@ -250,6 +255,26 @@ void gui_draw () {
 
   // Draw on screen
   // Add all conditional rendering here
+
+  /**
+   * //Example of conditional rendering
+   * 
+   * bool rerender = false;
+   * 
+   * if ( rerender ) {
+   *    // Defined before void gui_draw();
+   *    rerenderScreenFunction( );
+   * }
+   * 
+   * // ! NOTE !
+   * // The Condition for rerendering MUST be in user_device.ino
+   * // and `bool rerender` should be a global variable
+   * // but it's ok while testing 
+   * delay( 1000 );
+   * // The screen will be rerendered every 2000ms
+   * rerender = !rerender;
+   * 
+   */
     
   uint16_t time = millis();
   screen.fillScreen(BLACK);
