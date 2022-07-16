@@ -1,0 +1,13 @@
+// Needed definition for ESPNOWCommunication library
+#define E32   1
+#include <ESPNOWCommunication.h>
+
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
